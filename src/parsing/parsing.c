@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 18:20:01 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/19 19:19:48 by ple-guya         ###   ########.fr       */
+/*   Created: 2024/11/25 16:55:19 by ple-guya          #+#    #+#             */
+/*   Updated: 2024/11/25 17:20:31 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	file_digger(t_cub *cub)
 	return (0);
 }
 
-int	init(t_cub *cub, int ac, char **av)
+int	parsing(t_cub *cub, int ac, char **av)
 {
 	t_color	f;
 	t_color	c;

@@ -6,13 +6,11 @@ CFLAGS := -Wall -Wextra -Werror -g3
 NAME := CUB3D
 
 ### SOURCE DIR ###
+
 SRC_DIR := src
+PARSING_DIR := $(SRC_DIR)/parsing
 INCLUDES_DIR := -I ./include
 
-## OBJECT FILE ###
-OBJ_DIR := .obj
-OBJ_SRC := $(addprefix $(OBJ_DIR)/, $(notdir $(SRC_FILE:%.c=%.o)))
-OBJ := $(OBJ_SRC)
 
 ##LIBFT
 LIBFT_DIR := ./libft
@@ -39,14 +37,24 @@ WHITE			=	\033[0;37m
 # *************************************************************************** #
 #                             MANDATORY SOURCE FILE                           #
 # *************************************************************************** #
-SRC_FILE :=main.c \
-		init.c	\
-		map.c	\
-		utils_identifiers.c	\
-		utils_parsing.c \
-		utils_map.c \
-		error.c
+SRC_FILE := main.c \
+			error.c
+
+PARSING_FILE := parsing.c	\
+			map.c	\
+			utils_identifiers.c	\
+			utils_parsing.c \
+			utils_map.c 
+
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILE))
+PARSING = $(addprefix $(PARSING_DIR)/, $(PARSING_FILE))
+
+## OBJECT FILE ###
+OBJ_DIR := .obj
+OBJ_SRC := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
+OBJ_PARSING := $(patsubst $(PARSING_DIR)/%.c, $(OBJ_DIR)/%.o, $(PARSING))
+OBJ := $(OBJ_SRC) $(OBJ_PARSING)
+
 
 # *************************************************************************** #
 #                                SRC COMPILE OBJ                              #
@@ -56,13 +64,17 @@ all : $(NAME)
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR) -c $< -o $@
+
+$(OBJ_DIR)/%.o : $(PARSING_DIR)/%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR) -c $< -o $@
 
 $(LIBFT) :
 	@make -C $(LIBFT_DIR) --silent
 
 $(NAME) : $(OBJ) $(LIBFT) banner
-	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR) $(SRC) $(LIBFT) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 fclean : clean
 	@rm -f $(NAME)

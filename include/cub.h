@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:52:27 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/22 16:26:48 by ple-guya         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:47:43 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_cub
 /*       INITIALISATION       */
 /*******************************/
 
-int		init(t_cub *cub, int ac, char **av);
+int		parsing(t_cub *cub, int ac, char **av);
 int		init_map(t_cub *cub, char *line);
 int		get_xpm_fd(char *file, char **path, int *fd);
 void	init_color(t_color *room, char *line);
