@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:52:04 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/25 16:30:41 by ple-guya         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:33:45 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,24 @@ static int	init_start_point(t_cub *cub)
 
 int	check_valid_map(t_cub *cub)
 {
+	char	**map_cpy;
+	int		i;
+
 	cub->player_flag = 0;
+	i = 0;
 	if (init_start_point(cub))
 		return (print_error("its a solo game", "map"));
 	if (cub->player_flag == 0)
 		return (print_error("where's the og man", "map"));
-	// if (flood_fill(cub->map, cub->player_x, cub->player_y, '1'))
-	// 	return (print_error("Map not close", NULL));
+	map_cpy = (char **)malloc(sizeof(char *) * ft_tablen(cub->map) + 1);
+	while (cub->map[i])
+	{
+		map_cpy[i] = ft_strdup(cub->map[i]);
+		i++;
+	}
+	if (flood_fill(map_cpy, cub->player_x, cub->player_y, '1'))
+		return (print_error("Map not close", NULL));
+	clean_2dtab(map_cpy);
 	return (0);
 }
 

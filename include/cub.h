@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:52:27 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/25 16:47:43 by ple-guya         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:27:07 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		is_set(int c, char *set);
 
 //map
 int		check_is_map(char *line);
-int		flood_fill(char **map, int x, int y, char target);
+int		flood_fill(char **map, int x, int y, char wall);
 
 //error
 int		print_error(char *error, char *file);
