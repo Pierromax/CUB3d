@@ -43,7 +43,9 @@ SRC_FILE :=main.c \
 		init.c	\
 		map.c	\
 		utils_identifiers.c	\
-		utils_parsing.c
+		utils_parsing.c \
+		utils_map.c \
+		error.c
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILE))
 
 # *************************************************************************** #

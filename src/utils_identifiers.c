@@ -6,63 +6,60 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:55:02 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/14 19:23:40 by ple-guya         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:47:42 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub.h"
+#include "cub.h"
 
-int	check_color_line(char *line, char *set)
+int	is_set(int c, char *set)
 {
 	int	i;
-	int	j;
-	int	virg_count;
 
-	virg_count = 0;
 	i = 0;
-	while (line[i] || line[i] != '\n')
+	while (set[i])
 	{
-		j = 0;
-		if (line[i] == ',')
-			virg_count++;
-		while (set[j])
-		{
-			if (line[i] == set[j])
-				break ;
-			j++;
-		}
-		if (ft_isdigit(line[i]) && line[i] != set[j])
-			return (1);
+		if (set[i] == c)
+			return (0);
 		i++;
 	}
-	if (virg_count != 2)
+	return (1);
+}
+
+int	check_color_line(char *l)
+{
+	int	virg_count;
+	int	digit_count;
+	int	new_nb;
+
+	new_nb = 0;
+	virg_count = 0;
+	digit_count = 0;
+	while (*l && *l != '\n' && (!is_set(*l, " ,") || ft_isdigit(*l)))
+	{
+		if (*l == ' ' || *l == ',')
+		{
+			if (*l == ',')
+				virg_count++;
+			new_nb = 0;
+		}
+		if (ft_isdigit(*l) && new_nb == 0)
+		{
+			new_nb = 1;
+			digit_count++;
+		}
+		l++;
+	}
+	if (virg_count != 2 || digit_count != 3)
 		return (1);
 	return (0);
 }
 
-char	*simplify_color_line(char *line)
-{
-	char	*color;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	color = NULL;
-	while (line[i])
-	{
-		if (line[i] != ' ')
-			color[j++] = line[i++];
-		else
-			i++;
-	}
-	return (color);
-}
-
-void	init_color(t_color *room, char *line )
+void	init_color(t_color *room, char *line)
 {
 	char	**color;
 
+	room->color = 42;
 	color = ft_split(line, ',');
 	room->red = ft_atoi(color[0]);
 	room->grn = ft_atoi(color[1]);
@@ -72,6 +69,8 @@ void	init_color(t_color *room, char *line )
 
 int	get_xpm_fd(char *file, char **path, int *fd)
 {
+	if (*path)
+		free(*path);
 	*path = check_file_name(file, ".xpm");
 	if (path == NULL)
 		return (print_error(".xpm file needed", *path));
