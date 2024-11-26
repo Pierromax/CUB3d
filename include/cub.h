@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:52:27 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/25 18:27:07 by ple-guya         ###   ########.fr       */
+/*   Updated: 2024/11/26 23:42:53 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ typedef struct s_color
 
 typedef struct s_cub
 {
-	int		player_flag;
-	int		map_flag;
 	char	*so;
 	char	*no;
 	char	*se;
 	char	*ne;
+	int		player_flag;
+	int		map_flag;
 	int		so_fd;
 	int		no_fd;
 	int		se_fd;
 	int		ne_fd;
+	int		cub_fd;
 	int		player_x;
 	int		player_y;
 	t_color	*ceiling;
 	t_color	*floor;
-	int		cub_fd;
 	char	*file_name;
 	char	**map;
 }	t_cub;
@@ -74,8 +74,11 @@ char	*check_file_name(char *file, char *extension);
 int		is_identifier(char *line);
 char	*simplify_color_line(char *line);
 int		is_set(int c, char *set);
+char	**ft_tabdup(char **tab);
 
 //map
+int		check_one_block(t_cub *cub, char *map);
+int		init_start_point(t_cub *cub);
 int		check_is_map(char *line);
 int		flood_fill(char **map, int x, int y, char wall);
 
