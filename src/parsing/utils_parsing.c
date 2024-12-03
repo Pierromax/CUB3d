@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:52:55 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/26 23:47:02 by ple-guya         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:12:47 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ char	*check_file_name(char *file, char *extension)
 	i = 0;
 	file_cpy = file;
 	file_cpy = ft_strrchr(file_cpy, '.');
+	if (!file_cpy)
+		return (NULL);
 	if (ft_strcmp(file_cpy, extension))
 		return (NULL);
 	return (file);
