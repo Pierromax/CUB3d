@@ -122,9 +122,10 @@ void	free_all(t_cub *cub)
 
 void	init_cub(t_cub *cub)
 {
-	// Définir les couleurs jaune et rouge
-	cub->draw.ceil = rgb_to_col(255, 255, 0); // Jaune
-	cub->draw.floor = rgb_to_col(255, 0, 0);  // Rouge
+	cub->draw.ceil = rgb_to_col(cub->ceiling->blu, cub->ceiling->grn,
+			cub->ceiling->red);
+	cub->draw.floor = rgb_to_col(cub->floor->blu, cub->floor->grn,
+			cub->floor->red);
 	cub->mlx.mlx = mlx_init();
 	if (!cub->mlx.mlx)
 		clean_exit(cub, "Mlx init failed", 1);
@@ -143,6 +144,10 @@ int	main(int ac, char **av)
 	ft_bzero(&cub, sizeof(t_cub));
 	if (parsing(&cub, ac, av) == -1)
 		return (free_all(&cub), 1);
+	printf("Ceiling color: R=%d, G=%d, B=%d\n", cub.ceiling->red,
+		cub.ceiling->grn, cub.ceiling->blu);
+	printf("Floor color: R=%d, G=%d, B=%d\n", cub.floor->red, cub.floor->grn,
+		cub.floor->blu);
 	init_cub(&cub);
 	hooks(&cub);
 	mlx_loop(cub.mlx.mlx);
