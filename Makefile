@@ -11,6 +11,10 @@ SRC_DIR := src
 PARSING_DIR := $(SRC_DIR)/parsing
 INCLUDES_DIR := -I ./include
 
+##MLX
+MLX_DIR := ./include/minilibx
+MLXFLAGS = -I/usr/include -Imlx_linux -O3 -lXext -lX11 -lm
+MLX := $(MLX_DIR)/libmlx.a
 
 ##LIBFT
 LIBFT_DIR := ./libft
@@ -38,7 +42,9 @@ WHITE			=	\033[0;37m
 #                             MANDATORY SOURCE FILE                           #
 # *************************************************************************** #
 SRC_FILE := main.c \
-			error.c
+			error.c \
+			utils/print.c \
+			utils/keys_management.c
 
 PARSING_FILE := parsing.c	\
 			map.c	\
@@ -64,24 +70,31 @@ all : $(NAME)
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR)  -c $< -o $@ 
 
 $(OBJ_DIR)/%.o : $(PARSING_DIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR)  -c $< -o $@
+
 
 $(LIBFT) :
 	@make -C $(LIBFT_DIR) --silent
 
-$(NAME) : $(OBJ) $(LIBFT) banner
-	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+$(MLX) : 
+	@if [ ! -d "include/minilibx" ]; then \
+		git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR) > /dev/null 2>&1; \
+	fi
+	@make -C $(MLX_DIR) --silent > /dev/null 2>&1;
+
+$(NAME) : $(MLX) $(OBJ) $(LIBFT) banner
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(NAME)
 
 fclean : clean
 	@rm -f $(NAME)
 	@make -C libft fclean --silent
 
 clean :
-	@rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR) $(MLX_DIR)
 	@make -C libft clean --silent
 
 re : clean fclean all

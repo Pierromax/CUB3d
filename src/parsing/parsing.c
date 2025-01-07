@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:55:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/25 17:20:31 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:06:04 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ static int	get_color(t_cub *cub, char *line, t_color *room, int id)
 
 static int	get_info(t_cub *cub, char *line)
 {
-	int		i;
-	int		id;
+	int	i;
+	int	id;
 
 	i = 0;
 	if (!line || line[i] == '\n')
@@ -89,12 +89,12 @@ int	file_digger(t_cub *cub)
 	while (line)
 	{
 		if (!line)
-			return (1);
+			return (-1);
 		identifier = get_info(cub, line);
 		if (identifier == map_wall)
 			break ;
 		if (identifier == -1)
-			return (free(line), 1);
+			return (free(line), -1);
 		free(line);
 		line = get_next_line(cub->cub_fd);
 	}
@@ -128,6 +128,6 @@ int	parsing(t_cub *cub, int ac, char **av)
 	if (cub->cub_fd == -1)
 		return (print_error("can't access or don't exist", cub->file_name));
 	if (file_digger(cub) == -1)
-		return (1);
+		return (-1);
 	return (0);
 }

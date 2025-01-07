@@ -1,5 +1,11 @@
 {
 	"files.associations": {
-		"cub.h": "c"
-	}
+		"cub.h": "c",
+		"stat.h": "c",
+		"fcntl.h": "c",
+		"squids_out.h": "c",
+		"minisquidx.h": "c",
+		"math.h": "c"
+	},
+	"functionHeaderExtension.headerFilePath": "/home/cviegas/Documents/CUB3d/include/cub.h"
 }
