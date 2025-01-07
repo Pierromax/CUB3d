@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:47:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/26 23:42:10 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:18:49 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	check_one_block(t_cub *cub, char *map)
 
 int	init_start_point(t_cub *cub)
 {
-	int		i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (cub->map[i])
@@ -59,6 +59,14 @@ int	init_start_point(t_cub *cub)
 					cub->player_x = j;
 					cub->player_y = i;
 					cub->player_flag = 1;
+					if (cub->map[i][j] == 'N')
+						cub->player.dir = (t_v2f){-1, 0};
+					else if (cub->map[i][j] == 'S')
+						cub->player.dir = (t_v2f){1, 0};
+					else if (cub->map[i][j] == 'E')
+						cub->player.dir = (t_v2f){0, 1};
+					else if (cub->map[i][j] == 'W')
+						cub->player.dir = (t_v2f){0, -1};
 				}
 				else if (cub->player_flag == 1)
 					return (1);

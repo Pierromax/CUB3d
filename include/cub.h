@@ -6,7 +6,7 @@
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:52:27 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/07 17:43:31 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/07 17:56:44 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,10 @@ typedef struct s_mlx
 
 typedef struct s_player
 {
-	t_v2f				player_dir;
-	t_v2f				player_pos;
+	t_v2f				dir;
+	t_v2f				pos;
+	t_v2f				plane;
+
 }						t_player;
 
 typedef struct s_draw
