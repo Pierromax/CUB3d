@@ -6,7 +6,7 @@
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:55:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/07 15:06:04 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:38:58 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ static int	get_info(t_cub *cub, char *line)
 		return (get_color(cub, line + i + 2, cub->ceiling, id));
 	if (id == F)
 		return (get_color(cub, line + i + 2, cub->floor, id));
-	if (id == map_wall)
-		return (map_wall);
+	if (id == MAP_WALL)
+		return (MAP_WALL);
 	return (0);
 }
 
@@ -91,7 +91,7 @@ int	file_digger(t_cub *cub)
 		if (!line)
 			return (-1);
 		identifier = get_info(cub, line);
-		if (identifier == map_wall)
+		if (identifier == MAP_WALL)
 			break ;
 		if (identifier == -1)
 			return (free(line), -1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:52:55 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/12/03 16:12:47 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:38:58 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	is_identifier(char *line)
 	if (!ft_strncmp(line, "F ", 2))
 		return (F);
 	if (!check_is_map(line))
-		return (map_wall);
+		return (MAP_WALL);
 	return (0);
 }
 

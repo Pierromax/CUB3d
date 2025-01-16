@@ -6,7 +6,7 @@
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:12:32 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/07 15:41:18 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:27:32 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	s(void)
 	static int	count = 0;
 	static int	color_index = 0;
 	const char	*colors[] = {"\033[1;31m", "\033[1;32m", "\033[1;33m",
-			"\033[1;34m", "\033[1;35m", "\033[1;36m", "\033[1;37m"};
+		"\033[1;34m", "\033[1;35m", "\033[1;36m", "\033[1;37m"};
 	int			num_colors;
 
 	num_colors = sizeof(colors) / sizeof(colors[0]);

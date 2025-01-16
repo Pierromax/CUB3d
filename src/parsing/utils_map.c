@@ -6,7 +6,7 @@
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:47:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/07 18:18:49 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:37:22 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ int	check_one_block(t_cub *cub, char *map)
 	return (0);
 }
 
+static void	set_player_infos(t_cub *cub, int i, int j)
+{
+	cub->player.pos = (t_v2f){j, i};
+	cub->player_flag = 1;
+	if (cub->map[i][j] == 'N')
+		cub->player.dir = (t_v2f){-1, 0};
+	else if (cub->map[i][j] == 'S')
+		cub->player.dir = (t_v2f){1, 0};
+	else if (cub->map[i][j] == 'E')
+		cub->player.dir = (t_v2f){0, 1};
+	else if (cub->map[i][j] == 'W')
+		cub->player.dir = (t_v2f){0, -1};
+}
+
 int	init_start_point(t_cub *cub)
 {
 	int	i;
@@ -55,19 +69,7 @@ int	init_start_point(t_cub *cub)
 			if (!is_set(cub->map[i][j], "SENW"))
 			{
 				if (cub->player_flag == 0)
-				{
-					cub->player_x = j;
-					cub->player_y = i;
-					cub->player_flag = 1;
-					if (cub->map[i][j] == 'N')
-						cub->player.dir = (t_v2f){-1, 0};
-					else if (cub->map[i][j] == 'S')
-						cub->player.dir = (t_v2f){1, 0};
-					else if (cub->map[i][j] == 'E')
-						cub->player.dir = (t_v2f){0, 1};
-					else if (cub->map[i][j] == 'W')
-						cub->player.dir = (t_v2f){0, -1};
-				}
+					set_player_infos(cub, i, j);
 				else if (cub->player_flag == 1)
 					return (1);
 			}

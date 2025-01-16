@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 18:52:27 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/07 17:56:44 by cviegas          ###   ########.fr       */
+/*   Created: 2025/01/16 17:38:01 by cviegas           #+#    #+#             */
+/*   Updated: 2025/01/16 17:38:58 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@
 # include <stdbool.h>
 # include <sys/stat.h>
 
+# ifndef BONUS
+#  define BONUS 1
+# endif
 # define SO 1
 # define SE 2
 # define NO 3
 # define NE 4
 # define C 5
 # define F 6
-# define map_wall 7
+# define MAP_WALL 7
 
 # define STDERR STDERR_FILENO
 # define FAIL EXIT_FAILURE
@@ -84,7 +87,6 @@ typedef struct s_player
 	t_v2f				dir;
 	t_v2f				pos;
 	t_v2f				plane;
-
 }						t_player;
 
 typedef struct s_draw
@@ -92,6 +94,18 @@ typedef struct s_draw
 	t_col				ceil;
 	t_col				floor;
 }						t_draw;
+
+typedef struct s_dda
+{
+	t_v2f				ray_dir;
+	t_v2i				map_pos;
+	t_v2f				side_dist;
+	t_v2f				delta_dist;
+	double				perp_wall_dist;
+	int					line_height;
+	int					draw_start;
+	int					draw_end;
+}						t_dda;
 
 typedef struct s_cub
 {
@@ -102,7 +116,6 @@ typedef struct s_cub
 	t_player			player;
 	t_color				*ceiling;
 	t_color				*floor;
-
 	char				*so;
 	char				*no;
 	char				*se;
@@ -116,7 +129,6 @@ typedef struct s_cub
 	int					cub_fd;
 	int					player_x;
 	int					player_y;
-
 	char				*file_name;
 }						t_cub;
 
