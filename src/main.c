@@ -6,7 +6,7 @@
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:27:49 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/16 17:33:19 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:55:17 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,6 @@ void	dda(t_cub *c)
 		x++;
 	}
 }
-
-#define MOVESPEED 0.1
 
 void	handle_movements(t_cub *c)
 {

@@ -6,7 +6,7 @@
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:38:01 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/16 17:38:58 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:56:30 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define C 5
 # define F 6
 # define MAP_WALL 7
+# define MOVESPEED 0.1
 
 # define STDERR STDERR_FILENO
 # define FAIL EXIT_FAILURE
