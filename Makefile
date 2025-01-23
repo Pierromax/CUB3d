@@ -77,7 +77,7 @@ OBJ := $(OBJ_SRC) $(OBJ_EXEC) $(OBJ_PARSING)
 #                                SRC COMPILE OBJ                              #
 # *************************************************************************** #
 
-all : $(NAME) 
+all : $(NAME)
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
@@ -95,14 +95,15 @@ $(OBJ_DIR)/%.o : $(PARSING_DIR)/%.c
 $(LIBFT) :
 	@make -C $(LIBFT_DIR) --silent
 
-$(MLX) : 
+$(MLX) :
 	@if [ ! -d "include/minilibx" ]; then \
 		git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR) > /dev/null 2>&1; \
 	fi
 	@make -C $(MLX_DIR) --silent > /dev/null 2>&1;
 
-$(NAME) : $(MLX) $(OBJ) $(LIBFT) banner
+$(NAME) : $(MLX) $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(NAME)
+	@make --silent banner
 
 fclean : clean
 	@rm -f $(NAME)
@@ -114,7 +115,7 @@ clean :
 
 re : clean fclean all
 
-banner:
+banner :
 	@echo "$(RED)	 _____ _   _______  ___________ "
 	@echo "	/  __ \ | | | ___ \|____ |  _  \\"
 	@echo "	| /  \/ | | | |_/ /    / / | | |"
@@ -122,6 +123,5 @@ banner:
 	@echo "	| \__/\ |_| | |_/ /.___/ / |/ / "
 	@echo "	 \____/\___/\____/ \____/|___/  "
 	@echo ""
-
 
 .PHONY : all clean fclean banner re
