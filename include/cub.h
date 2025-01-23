@@ -6,7 +6,7 @@
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:38:01 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/16 17:56:30 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/23 16:14:12 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <sys/stat.h>
 
 # ifndef BONUS
-#  define BONUS 1
+#  define BONUS 0
 # endif
 # define SO 1
 # define SE 2
@@ -106,6 +106,8 @@ typedef struct s_dda
 	int					line_height;
 	int					draw_start;
 	int					draw_end;
+	double				side_x;
+	int					side;
 }						t_dda;
 
 typedef struct s_cub
@@ -131,6 +133,7 @@ typedef struct s_cub
 	int					player_x;
 	int					player_y;
 	char				*file_name;
+	t_img				textures[4];
 }						t_cub;
 
 /*******************************/
@@ -166,6 +169,15 @@ int						print_error(char *error, char *file);
 int						check_identifier(t_cub *cub, char *first_line);
 
 /* FUNCTIONS */
+void					calculate_wall_distance(t_cub *c, t_dda *dda,
+							t_v2i step, bool side);
+void					perform_dda(t_cub *c, t_dda *dda, t_v2i step,
+							bool *side);
+void					draw_vertical_line(t_cub *c, int x, t_dda *dda,
+							t_img texture);
+void					init_cub(t_cub *cub);
+t_col					rgb_to_col(int red, int green, int blue);
+void					put_pixel(t_cub *c, t_v2i pos, t_col color);
 void					clean_exit(t_cub *cub, char *msg, int exit_code);
 void					psucc(const char *s);
 int						m_release(int button, t_cub *c);
@@ -176,5 +188,23 @@ bool					is_pressed(int key, t_cub *c);
 void					free_all(t_cub *cub);
 void					perr(const char *s);
 void					s(void);
+
+void					calculate_ray_direction(t_cub *c, int x, t_dda *dda);
+void					initialize_dda(t_cub *c, t_dda *dda, t_v2i *step);
+void					calculate_draw_limits(t_cub *c, t_dda *dda);
+
+void					dda(t_cub *c);
+void					draw_ceil_and_floor(t_cub *c);
+
+void					handle_movements(t_cub *c);
+int						mouse_move(int x, int y, t_cub *c);
+void					hooks(t_cub *c);
+
+void					p_freeimg(t_img *img, t_mlx *mlx);
+t_img					init_screen(t_cub *cub);
+t_img					init_square(t_cub *cub, char *path);
+
+int						exit_game(t_cub *c);
+int						update(t_cub *c);
 
 #endif

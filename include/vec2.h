@@ -21,8 +21,8 @@
 # define _USE_MATH_DEFINES
 # include <math.h>
 
-typedef float t_v2f			__attribute__((vector_size(8)));
-typedef unsigned int t_v2u	__attribute__((vector_size(8)));
-typedef int t_v2i			__attribute__((vector_size(8)));
+typedef float			t_v2f __attribute__((vector_size (8)));
+typedef unsigned int	t_v2u __attribute__((vector_size (8)));
+typedef int				t_v2i __attribute__((vector_size (8)));
 
 #endif

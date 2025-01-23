@@ -8,6 +8,7 @@ NAME := CUB3D
 ### SOURCE DIR ###
 
 SRC_DIR := src
+EXEC_DIR := $(SRC_DIR)/exec
 PARSING_DIR := $(SRC_DIR)/parsing
 INCLUDES_DIR := -I ./include
 
@@ -42,9 +43,17 @@ WHITE			=	\033[0;37m
 #                             MANDATORY SOURCE FILE                           #
 # *************************************************************************** #
 SRC_FILE := main.c \
-			error.c \
 			utils/print.c \
 			utils/keys_management.c
+
+EXEC_FILE := dda.c \
+			draw.c \
+			draw_utils.c \
+			error.c \
+			utils.c \
+			init.c \
+			game.c \
+			hooks.c
 
 PARSING_FILE := parsing.c	\
 			map.c	\
@@ -53,13 +62,15 @@ PARSING_FILE := parsing.c	\
 			utils_map.c 
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILE))
+EXEC = $(addprefix $(EXEC_DIR)/, $(EXEC_FILE))
 PARSING = $(addprefix $(PARSING_DIR)/, $(PARSING_FILE))
 
 ## OBJECT FILE ###
 OBJ_DIR := .obj
 OBJ_SRC := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC))
+OBJ_EXEC := $(patsubst $(EXEC_DIR)/%.c, $(OBJ_DIR)/%.o, $(EXEC))
 OBJ_PARSING := $(patsubst $(PARSING_DIR)/%.c, $(OBJ_DIR)/%.o, $(PARSING))
-OBJ := $(OBJ_SRC) $(OBJ_PARSING)
+OBJ := $(OBJ_SRC) $(OBJ_EXEC) $(OBJ_PARSING)
 
 
 # *************************************************************************** #
@@ -71,6 +82,10 @@ all : $(NAME)
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR)  -c $< -o $@ 
+
+$(OBJ_DIR)/%.o : $(EXEC_DIR)/%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR)  -c $< -o $@
 
 $(OBJ_DIR)/%.o : $(PARSING_DIR)/%.c
 	@mkdir -p $(@D)

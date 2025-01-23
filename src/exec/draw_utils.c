@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 17:27:49 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/23 15:43:51 by cviegas          ###   ########.fr       */
+/*   Created: 2025/01/23 16:09:17 by cviegas           #+#    #+#             */
+/*   Updated: 2025/01/23 16:09:25 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	main(int ac, char **av)
+void	draw_ceil_and_floor(t_cub *c)
 {
-	t_cub	cub;
+	t_v2i	pos;
 
-	ft_bzero(&cub, sizeof(t_cub));
-	if (parsing(&cub, ac, av) == -1)
-		return (free_all(&cub), 1);
-	init_cub(&cub);
-	if (BONUS)
-		mlx_mouse_hide(cub.mlx.mlx, cub.mlx.win);
-	hooks(&cub);
-	mlx_loop(cub.mlx.mlx);
-	clean_exit(&cub, "Opti3D exited successfully", 0);
-	return (0);
+	pos[1] = 0;
+	while (pos[1] < c->mlx.screen.size[1] / 2)
+	{
+		pos[0] = 0;
+		while (pos[0] < c->mlx.screen.size[0])
+		{
+			put_pixel(c, pos, c->draw.ceil);
+			pos[0]++;
+		}
+		pos[1]++;
+	}
+	while (pos[1] < c->mlx.screen.size[1])
+	{
+		pos[0] = 0;
+		while (pos[0] < c->mlx.screen.size[0])
+		{
+			put_pixel(c, pos, c->draw.floor);
+			pos[0]++;
+		}
+		pos[1]++;
+	}
 }

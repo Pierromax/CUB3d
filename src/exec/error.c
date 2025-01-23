@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 17:27:49 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/23 15:43:51 by cviegas          ###   ########.fr       */
+/*   Created: 2025/01/23 16:09:21 by cviegas           #+#    #+#             */
+/*   Updated: 2025/01/23 16:09:21 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	main(int ac, char **av)
+int	print_error(char *error, char *file)
 {
-	t_cub	cub;
+	if (file)
+		ft_putstr_fd(file, STDERR);
+	ft_putstr_fd(": ", STDERR);
+	ft_putstr_fd(error, STDERR);
+	ft_putchar_fd('\n', STDERR);
+	return (FAIL);
+}
 
-	ft_bzero(&cub, sizeof(t_cub));
-	if (parsing(&cub, ac, av) == -1)
-		return (free_all(&cub), 1);
-	init_cub(&cub);
-	if (BONUS)
-		mlx_mouse_hide(cub.mlx.mlx, cub.mlx.win);
-	hooks(&cub);
-	mlx_loop(cub.mlx.mlx);
-	clean_exit(&cub, "Opti3D exited successfully", 0);
-	return (0);
+void	clean_exit(t_cub *cub, char *msg, int exit_code)
+{
+	free_all(cub);
+	if (msg)
+		ft_putstr_fd(msg, STDERR);
+	exit(exit_code);
 }
