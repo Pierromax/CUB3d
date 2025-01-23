@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:39 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/23 15:43:49 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:11:24 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	clean_exit(t_cub *cub, char *msg, int exit_code)
 
 void	free_all(t_cub *cub)
 {
-	free(cub->se);
+	free(cub->ea);
 	free(cub->so);
 	free(cub->no);
-	free(cub->ne);
+	free(cub->we);
 	p_freeimg(&cub->mlx.screen, &cub->mlx);
 	p_freeimg(&cub->textures[0], &cub->mlx);
 	p_freeimg(&cub->textures[1], &cub->mlx);

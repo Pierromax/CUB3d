@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:55:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/16 17:38:58 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:12:02 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int	get_xpm_file(t_cub *cub, char *line, int id)
 
 	if (id == SO && cub->so)
 		return (print_error("ARG REPEAT", "SO"));
-	if (id == SE && cub->se)
-		return (print_error("ARG REPEAT", "SE"));
-	if (id == NE && cub->ne)
-		return (print_error("ARG REPEAT", "NE"));
+	if (id == WE && cub->we)
+		return (print_error("ARG REPEAT", "WE"));
+	if (id == EA && cub->ea)
+		return (print_error("ARG REPEAT", "EA"));
 	if (id == NO && cub->no)
 		return (print_error("ARG REPEAT", "NO"));
 	if (count_words(line) != 1)
@@ -29,12 +29,12 @@ static int	get_xpm_file(t_cub *cub, char *line, int id)
 	file = ft_strtrim(line, " \n");
 	if (id == SO)
 		return (get_xpm_fd(file, &cub->so, &cub->so_fd));
-	if (id == SE)
-		return (get_xpm_fd(file, &cub->se, &cub->se_fd));
+	if (id == WE)
+		return (get_xpm_fd(file, &cub->we, &cub->we_fd));
 	if (id == NO)
 		return (get_xpm_fd(file, &cub->no, &cub->no_fd));
-	if (id == NE)
-		return (get_xpm_fd(file, &cub->ne, &cub->ne_fd));
+	if (id == EA)
+		return (get_xpm_fd(file, &cub->ea, &cub->ea_fd));
 	return (0);
 }
 
@@ -69,7 +69,7 @@ static int	get_info(t_cub *cub, char *line)
 	if (!line[i])
 		return (0);
 	id = is_identifier(line + i);
-	if (id == SO || id == SE || id == NO || id == NE)
+	if (id == SO || id == WE || id == NO || id == EA)
 		return (get_xpm_file(cub, line + i + 3, id));
 	if (id == C)
 		return (get_color(cub, line + i + 2, cub->ceiling, id));
@@ -115,8 +115,8 @@ int	parsing(t_cub *cub, int ac, char **av)
 	cub->ceiling = &c;
 	cub->floor = &f;
 	cub->no = NULL;
-	cub->se = NULL;
-	cub->ne = NULL;
+	cub->we = NULL;
+	cub->ea = NULL;
 	cub->so = NULL;
 	cub->map = NULL;
 	if (ac != 2)

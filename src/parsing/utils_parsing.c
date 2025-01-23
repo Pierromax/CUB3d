@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:52:55 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/16 17:38:58 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:12:27 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	is_identifier(char *line)
 {
 	if (!ft_strncmp(line, "SO ", 3))
 		return (SO);
-	if (!ft_strncmp(line, "SE ", 3))
-		return (SE);
+	if (!ft_strncmp(line, "WE ", 3))
+		return (WE);
 	if (!ft_strncmp(line, "NO ", 3))
 		return (NO);
-	if (!ft_strncmp(line, "NE ", 3))
-		return (NE);
+	if (!ft_strncmp(line, "EA ", 3))
+		return (EA);
 	if (!ft_strncmp(line, "C ", 2))
 		return (C);
 	if (!ft_strncmp(line, "F ", 2))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:38:01 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/23 16:14:12 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/23 17:09:16 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 #  define BONUS 0
 # endif
 # define SO 1
-# define SE 2
+# define WE 2
 # define NO 3
-# define NE 4
+# define EA 4
 # define C 5
 # define F 6
 # define MAP_WALL 7
@@ -121,14 +121,14 @@ typedef struct s_cub
 	t_color				*floor;
 	char				*so;
 	char				*no;
-	char				*se;
-	char				*ne;
+	char				*we;
+	char				*ea;
 	int					player_flag;
 	int					map_flag;
 	int					so_fd;
 	int					no_fd;
-	int					se_fd;
-	int					ne_fd;
+	int					ea_fd;
+	int					we_fd;
 	int					cub_fd;
 	int					player_x;
 	int					player_y;
