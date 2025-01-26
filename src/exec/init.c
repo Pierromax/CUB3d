@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:34 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/26 13:16:29 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 15:36:54 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	init_cub(t_cub *cub)
 	if (!cub->mlx.win)
 		clean_exit(cub, "Mlx Window creation failed", 1);
 	cub->mlx.screen = init_screen(cub);
-	cub->player.plane = (t_v2f){0, 0.66};
 	cub->textures[0] = init_square(cub, cub->no);
 	cub->textures[1] = init_square(cub, cub->so);
 	cub->textures[2] = init_square(cub, cub->we);
