@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:55:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 13:12:57 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:19:27 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	file_digger(t_cub *cub)
 		if (identifier == MAP_WALL)
 			break ;
 		if (identifier == 0)
-			return (free(line), -1);
+			return (print_error("invalid ARG found", NULL) , free(line), -1);
 		free(line);
 		line = get_next_line(cub->cub_fd);
 	}
