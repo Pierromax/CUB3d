@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:55:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 13:57:32 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 15:19:19 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	get_info(t_cub *cub, char *line)
 	i = 0;
 	if (!line || line[i] == '\n')
 		return (0);
-	while (line[i] == ' ')
+	while (!is_set(line[i], " \t"))
 		i++;
 	if (!line[i])
 		return (0);
@@ -98,7 +98,7 @@ int	file_digger(t_cub *cub)
 		if (identifier == MAP_WALL)
 			break ;
 		if (identifier == RDM_ARG)
-			return(free(line), print_error("INVALID ARG FOUND", NULL));
+			return (free(line), print_error("INVALID ARG FOUND", NULL));
 		if (identifier == -1)
 			return (free(line), -1);
 		free(line);

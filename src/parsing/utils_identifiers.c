@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:55:02 by ple-guya          #+#    #+#             */
-/*   Updated: 2024/11/22 12:47:42 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:41:38 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ int	get_xpm_fd(char *file, char **path, int *fd)
 		return (print_error(".xpm file needed", *path));
 	*fd = open(*path, O_RDONLY);
 	if (*fd == -1)
-		return (print_error("file don't exist or can't access", *path));
+	{
+		print_error("file don't exist or can't access", file);
+		free(file);
+		return (-1);
+	}
 	return (0);
 }

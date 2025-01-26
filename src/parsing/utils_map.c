@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:47:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 13:03:39 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/26 17:33:10 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ int	check_is_map(char *line)
 
 int	flood_fill(char **map, int x, int y, char wall)
 {
-	if (x < 0 || y < 0 || !map[y][x] || !map[y] || map[y][x] == ' ')
+	if (x < 0 || y < 0 || !map[y] || y >= (int)ft_strlen(map[y])
+		|| x >= (int)ft_strlen(map[y]) || map[y][x] == ' ')
 		return (1);
 	if (map[y][x] == wall || map[y][x] == 'v')
 		return (0);

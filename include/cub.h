@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:38:01 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/26 13:54:44 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:27:00 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ int						is_identifier(char *line);
 char					*simplify_color_line(char *line);
 int						is_set(int c, char *set);
 char					**ft_tabdup(char **tab);
+char 					*addspace(char *line);
 
 // map
 int						check_one_block(t_cub *cub, char *map);

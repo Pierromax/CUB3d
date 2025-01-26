@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:52:04 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 13:44:01 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:16:13 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ int	check_valid_map(t_cub *cub)
 	return (0);
 }
 
-static char	*get_map(t_cub *cub, char *map)
+static void	*get_map(t_cub *cub, char *map)
 {
 	char	*map_tmp;
 	char	*line;
-
+	
 	map_tmp = map;
 	line = get_next_line(cub->cub_fd);
 	while (line)
@@ -65,6 +65,8 @@ static char	*get_map(t_cub *cub, char *map)
 			print_error("invalid arg found", "map");
 			return (free(line), free(map_tmp), NULL);
 		}
+		if (ft_strlen(line) == 1)
+			line = addspace(line); 
 		map = ft_strjoin(map_tmp, line);
 		free(map_tmp);
 		free(line);
@@ -84,16 +86,20 @@ int	init_map(t_cub *cub, char *first_line)
 	int		i;
 
 	i = 0;
+	if (first_line == NULL)
+		return (print_error("NO MAP FOUND", NULL));
 	if (check_identifier(cub, first_line) == -1)
 		return (1);
 	map_tmp = ft_strdup(first_line);
+	if (!map_tmp)
+		return (print_error("MALLOC CRAMPTED", NULL));
 	free(first_line);
 	map = get_map(cub, map_tmp);
-	if (check_one_block(cub, map))
-		return (free(map), print_error("just one block pls man", "map"));
+	if (!map)
+		return (1);
 	cub->map = ft_split(map, '\n');
 	free(map);
 	if (!cub->map)
-		return (1);
+		return ((s(), 1));
 	return (0);
 }

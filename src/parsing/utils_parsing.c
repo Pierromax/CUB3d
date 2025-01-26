@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:52:55 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 13:54:57 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:52:26 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ char	**ft_tabdup(char **tab)
 	len = ft_tablen(tab);
 	i = 0;
 	tab_dup = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!tab_dup)
+		return (NULL);
 	while (i < len)
 	{
 		tab_dup[i] = ft_strdup(tab[i]);
@@ -95,4 +97,18 @@ char	**ft_tabdup(char **tab)
 	}
 	tab_dup[i] = NULL;
 	return (tab_dup);
+}
+
+char *addspace(char *line)
+{
+	char *newline;
+
+	free(line);
+	newline = (char *)malloc(3);
+	if (!newline)
+		return (NULL);
+	newline[0] = ' ';
+	newline[1] = '\n';
+	newline[2] = '\0';
+	return(newline);
 }
