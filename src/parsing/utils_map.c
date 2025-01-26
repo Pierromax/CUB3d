@@ -6,7 +6,7 @@
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:47:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/16 17:37:22 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/26 13:03:39 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_one_block(t_cub *cub, char *map)
 
 static void	set_player_infos(t_cub *cub, int i, int j)
 {
-	cub->player.pos = (t_v2f){j, i};
+	cub->player.pos = (t_v2f){i, j};
 	cub->player_flag = 1;
 	if (cub->map[i][j] == 'N')
 		cub->player.dir = (t_v2f){-1, 0};
