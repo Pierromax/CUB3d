@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:52:04 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 17:16:13 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:47:11 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	*get_map(t_cub *cub, char *map)
 {
 	char	*map_tmp;
 	char	*line;
-	
+
 	map_tmp = map;
 	line = get_next_line(cub->cub_fd);
 	while (line)
@@ -66,7 +66,7 @@ static void	*get_map(t_cub *cub, char *map)
 			return (free(line), free(map_tmp), NULL);
 		}
 		if (ft_strlen(line) == 1)
-			line = addspace(line); 
+			line = addspace(line);
 		map = ft_strjoin(map_tmp, line);
 		free(map_tmp);
 		free(line);

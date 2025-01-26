@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:52:55 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 16:52:26 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:48:52 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_identifier(char *line)
 {
-	int len;
+	int	len;
 
 	if (!ft_strncmp(line, "SO ", 3))
 		return (SO);
@@ -99,9 +99,9 @@ char	**ft_tabdup(char **tab)
 	return (tab_dup);
 }
 
-char *addspace(char *line)
+char	*addspace(char *line)
 {
-	char *newline;
+	char	*newline;
 
 	free(line);
 	newline = (char *)malloc(3);
@@ -110,5 +110,5 @@ char *addspace(char *line)
 	newline[0] = ' ';
 	newline[1] = '\n';
 	newline[2] = '\0';
-	return(newline);
+	return (newline);
 }
