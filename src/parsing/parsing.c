@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:55:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 13:19:27 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:21:05 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	get_info(t_cub *cub, char *line)
 		return (get_color(cub, line + i + 2, cub->floor, id));
 	if (id == MAP_WALL)
 		return (MAP_WALL);
-	return (id);
+	return (0);
 }
 
 int	file_digger(t_cub *cub)
