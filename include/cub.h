@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:38:01 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/23 17:09:16 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:54:44 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define C 5
 # define F 6
 # define MAP_WALL 7
+# define RDM_ARG 8
 # define MOVESPEED 0.1
 
 # define STDERR STDERR_FILENO

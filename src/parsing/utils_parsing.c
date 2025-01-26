@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:52:55 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 13:46:14 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 13:54:57 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	is_identifier(char *line)
 {
+	int len;
+
 	if (!ft_strncmp(line, "SO ", 3))
 		return (SO);
 	if (!ft_strncmp(line, "WE ", 3))
@@ -28,6 +30,9 @@ int	is_identifier(char *line)
 		return (F);
 	if (!check_is_map(line))
 		return (MAP_WALL);
+	len = ft_strlen(line);
+	if (len > 0)
+		return (RDM_ARG);
 	return (0);
 }
 
