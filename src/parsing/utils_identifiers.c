@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_identifiers.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 16:55:02 by ple-guya          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/01/26 17:41:38 by ple-guya         ###   ########.fr       */
+=======
+/*   Updated: 2025/01/26 13:19:01 by cviegas          ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 

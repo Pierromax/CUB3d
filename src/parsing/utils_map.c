@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:47:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 17:33:10 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:51:05 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,29 @@ int	check_one_block(t_cub *cub, char *map)
 
 static void	set_player_infos(t_cub *cub, int i, int j)
 {
-	cub->player.pos = (t_v2f){i, j};
+	cub->player.pos = (t_v2f){i + 0.5, j + 0.5};
 	cub->player_flag = 1;
 	if (cub->map[i][j] == 'N')
+	{
 		cub->player.dir = (t_v2f){-1, 0};
+		cub->player.plane = (t_v2f){0, 0.66};
+	}
 	else if (cub->map[i][j] == 'S')
+	{
 		cub->player.dir = (t_v2f){1, 0};
+		cub->player.plane = (t_v2f){os(cub, i, j);
+				else if (cub->pla0, -0.66};
+	}
 	else if (cub->map[i][j] == 'E')
+	{
 		cub->player.dir = (t_v2f){0, 1};
+		cub->player.plane = (t_v2f){0.66, 0};
+	}
 	else if (cub->map[i][j] == 'W')
+	{
 		cub->player.dir = (t_v2f){0, -1};
+		cub->player.plane = (t_v2f){-0.66, 0};
+	}
 }
 
 int	init_start_point(t_cub *cub)
