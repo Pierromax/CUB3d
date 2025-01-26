@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 12:47:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/26 17:51:05 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:52:57 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ static void	set_player_infos(t_cub *cub, int i, int j)
 	else if (cub->map[i][j] == 'S')
 	{
 		cub->player.dir = (t_v2f){1, 0};
-		cub->player.plane = (t_v2f){os(cub, i, j);
-				else if (cub->pla0, -0.66};
+		cub->player.plane = (t_v2f){0, -0.66};
 	}
 	else if (cub->map[i][j] == 'E')
 	{
