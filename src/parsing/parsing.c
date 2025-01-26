@@ -6,7 +6,7 @@
 /*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:55:19 by ple-guya          #+#    #+#             */
-/*   Updated: 2025/01/23 17:12:02 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/26 12:47:15 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ static int	get_xpm_file(t_cub *cub, char *line, int id)
 
 static int	get_color(t_cub *cub, char *line, t_color *room, int id)
 {
+	if (id == C && room->color == 0)
+		return (print_error("ARG REPEAT", "C"));
+	if (id == F && room->color == 0)
+		return (print_error("ARG REPEAT", "F"));
 	if (check_color_line(line))
 		return (print_error("INVALID PARAMETER FOUND", line));
 	init_color(room, line);

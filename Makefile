@@ -3,7 +3,7 @@ CC := cc
 CFLAGS := -Wall -Wextra -Werror -g3
 
 ### PROJECT NAME ###
-NAME := CUB3D
+NAME := cub3d
 
 ### SOURCE DIR ###
 
@@ -78,7 +78,7 @@ OBJ := $(OBJ_SRC) $(OBJ_EXEC) $(OBJ_PARSING)
 # *************************************************************************** #
 
 all : $(NAME)
-
+	
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR)  -c $< -o $@ 

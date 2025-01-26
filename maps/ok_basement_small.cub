@@ -1,0 +1,24 @@
+NO ./textures/w3d/basement.xpm
+SO ./textures/w3d/basement.xpm
+WE ./textures/w3d/basement.xpm
+EA ./textures/w3d/basement.xpm
+C 20,  20   , 20
+F 60,  60   , 60
+
+
+   111111
+   1E0001
+   111001
+111111001
+100000001
+100000001
+100111111
+100000001111
+100000001111
+111111000001
+     1111001
+     1000001
+    11110011
+    1011001
+    1000011
+    1111111
