@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:27:49 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/23 15:43:51 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/26 13:05:49 by ple-guya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int ac, char **av)
 	ft_bzero(&cub, sizeof(t_cub));
 	if (parsing(&cub, ac, av) == -1)
 		return (free_all(&cub), 1);
+	
+	printf("test");
 	init_cub(&cub);
 	if (BONUS)
 		mlx_mouse_hide(cub.mlx.mlx, cub.mlx.win);
