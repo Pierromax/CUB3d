@@ -4,6 +4,7 @@ CFLAGS := -Wall -Wextra -Werror -g3
 
 ### PROJECT NAME ###
 NAME := cub3d
+BONUS_NAME := cub3d_bonus
 
 ### SOURCE DIR ###
 
@@ -72,6 +73,11 @@ OBJ_EXEC := $(patsubst $(EXEC_DIR)/%.c, $(OBJ_DIR)/%.o, $(EXEC))
 OBJ_PARSING := $(patsubst $(PARSING_DIR)/%.c, $(OBJ_DIR)/%.o, $(PARSING))
 OBJ := $(OBJ_SRC) $(OBJ_EXEC) $(OBJ_PARSING)
 
+OBJ_BONUS_DIR := .obj_bonus
+OBJ_BONUS_SRC := $(patsubst $(SRC_DIR)/%.c, $(OBJ_BONUS_DIR)/%.o, $(SRC))
+OBJ_BONUS_EXEC := $(patsubst $(EXEC_DIR)/%.c, $(OBJ_BONUS_DIR)/%.o, $(EXEC))
+OBJ_BONUS_PARSING := $(patsubst $(PARSING_DIR)/%.c, $(OBJ_BONUS_DIR)/%.o, $(PARSING))
+OBJ_BONUS := $(OBJ_BONUS_SRC) $(OBJ_BONUS_EXEC) $(OBJ_BONUS_PARSING)
 
 # *************************************************************************** #
 #                                SRC COMPILE OBJ                              #
@@ -91,6 +97,17 @@ $(OBJ_DIR)/%.o : $(PARSING_DIR)/%.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR)  -c $< -o $@
 
+$(OBJ_BONUS_DIR)/%.o : $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR) -DBONUS=1 -c $< -o $@
+
+$(OBJ_BONUS_DIR)/%.o : $(EXEC_DIR)/%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR) -DBONUS=1 -c $< -o $@
+
+$(OBJ_BONUS_DIR)/%.o : $(PARSING_DIR)/%.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) $(INCLUDES_DIR) -I $(LIBFT_DIR) -DBONUS=1 -c $< -o $@
 
 $(LIBFT) :
 	@make -C $(LIBFT_DIR) --silent
@@ -105,15 +122,21 @@ $(NAME) : $(MLX) $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(NAME)
 	@make --silent banner
 
+$(BONUS_NAME) : $(MLX) $(OBJ_BONUS) $(LIBFT)
+	@$(CC) $(CFLAGS) -DBONUS=1 $(OBJ_BONUS) $(LIBFT) $(MLX) $(MLXFLAGS) -o $(BONUS_NAME)
+	@make --silent banner
+
 fclean : clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(BONUS_NAME)
 	@make -C libft fclean --silent
 
 clean :
-	@rm -rf $(OBJ_DIR) $(MLX_DIR)
+	@rm -rf $(OBJ_DIR) $(OBJ_BONUS_DIR) $(MLX_DIR)
 	@make -C libft clean --silent
 
 re : clean fclean all
+
+bonus : $(BONUS_NAME)
 
 banner :
 	@echo "$(RED)	 _____ _   _______  ___________ "
@@ -124,4 +147,4 @@ banner :
 	@echo "	 \____/\___/\____/ \____/|___/  "
 	@echo ""
 
-.PHONY : all clean fclean banner re
+.PHONY : all clean fclean banner re bonus

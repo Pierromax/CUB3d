@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 13:47:39 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/23 17:11:24 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:29:38 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	update(t_cub *c)
 {
 	if (is_pressed(XK_Escape, c))
 		clean_exit(c, "Escape Key Pressed, exited successfully", 0);
+	handle_directions(c);
 	handle_movements(c);
 	draw_ceil_and_floor(c);
 	dda(c);

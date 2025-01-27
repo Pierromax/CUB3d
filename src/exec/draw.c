@@ -6,7 +6,7 @@
 /*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:10:08 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/23 16:17:55 by cviegas          ###   ########.fr       */
+/*   Updated: 2025/01/27 17:17:47 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ t_img	choose_wall_texture(t_cub *c, t_dda *dda, bool side)
 	t_img	texture;
 
 	if (side == 1 && dda->ray_dir[1] < 0)
-		texture = c->textures[0];
-	else if (side == 1 && dda->ray_dir[1] >= 0)
-		texture = c->textures[1];
-	else if (side == 0 && dda->ray_dir[0] < 0)
-		texture = c->textures[2];
-	else
 		texture = c->textures[3];
+	else if (side == 1 && dda->ray_dir[1] >= 0)
+		texture = c->textures[2];
+	else if (side == 0 && dda->ray_dir[0] < 0)
+		texture = c->textures[1];
+	else
+		texture = c->textures[0];
 	if (!side)
 		dda->side_x = c->player.pos[1] + dda->perp_wall_dist * dda->ray_dir[1];
 	else

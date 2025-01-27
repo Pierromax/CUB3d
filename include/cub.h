@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ple-guya <ple-guya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cviegas <cviegas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:38:01 by cviegas           #+#    #+#             */
-/*   Updated: 2025/01/26 17:49:24 by ple-guya         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:49:31 by cviegas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define MAP_WALL 7
 # define RDM_ARG 8
 # define MOVESPEED 0.1
+# define ROT_SPEED 0.04
 
 # define STDERR STDERR_FILENO
 # define FAIL EXIT_FAILURE
@@ -198,6 +199,7 @@ void					calculate_draw_limits(t_cub *c, t_dda *dda);
 void					dda(t_cub *c);
 void					draw_ceil_and_floor(t_cub *c);
 
+void					handle_directions(t_cub *c);
 void					handle_movements(t_cub *c);
 int						mouse_move(int x, int y, t_cub *c);
 void					hooks(t_cub *c);
